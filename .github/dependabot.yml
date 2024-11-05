@@ -4,13 +4,13 @@
 version: 2
 updates:
 
-  # workflows
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    groups:
-      all:
-        patterns:
-          - "minor"
-          - "patch"
+# workflows
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    cron: "*/1 * * * *"
+  groups:
+    all:
+      patterns:
+      - "minor"
+      - "patch"
