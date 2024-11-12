@@ -67,6 +67,7 @@ runs:
       run: |
         # disable the errexit github enable that by default
         set +o errexit
+        set -x
         while IFS= read -r -d '' file; do
           if [[ "$file" == *testdata* ]]; then
             echo "Skipping testdata ${file}"
