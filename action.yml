@@ -76,7 +76,8 @@ runs:
 
           # Extract all image references and their digests
           mapfile -t image_lines < <(grep -i -E '[a-z0-9]+([._-][a-z0-9]+)*(/[a-z0-9]+([._-][a-z0-9]+)*)*@sha256:[a-z0-9]+' "$file" || true)
-
+          ls
+          echo $image_lines
           for line in "${image_lines[@]}"; do
             image=$(echo "$line" | cut -d @ -f1 | rev | cut -d = -f1 | cut -d ' ' -f1 | cut -d '"' -f1 | rev | sed -e "s/^docker:\/\///" | tr -d '' | tr -d '\t')
             digest=$(echo "$line"| cut -d @ -f2 | cut -d ' ' -f1 | cut -d '"' -f1 | tr -d '' | tr -d '\t')
