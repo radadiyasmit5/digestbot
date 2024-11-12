@@ -80,6 +80,8 @@ runs:
           for line in "${image_lines[@]}"; do
             image=$(echo "$line" | cut -d @ -f1 | rev | cut -d = -f1 | cut -d ' ' -f1 | cut -d '"' -f1 | rev | sed -e "s/^docker:\/\///" | tr -d '' | tr -d '\t')
             digest=$(echo "$line"| cut -d @ -f2 | cut -d ' ' -f1 | cut -d '"' -f1 | tr -d '' | tr -d '\t')
+            echo $image
+            echo $digest
 
             if [[ "$image" != *":"* ]]; then
               echo "Image $image in file $file does not have a tag, ignoring..."
